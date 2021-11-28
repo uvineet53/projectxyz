@@ -38,7 +38,6 @@ class AuthenticationWrapper extends StatelessWidget {
     final KUser? user = Provider.of<KUser?>(context);
     if (user != null) {
       return Home();
-      // ignore: invariant_booleans
     } else if (user == null) {
       return SignInForm();
     } else {
