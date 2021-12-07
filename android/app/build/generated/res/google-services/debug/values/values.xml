@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">281951453985-6fah86p8v943pj9oq9v72d036eq3b5nk.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">281951453985</string>
+    <string name="google_api_key" translatable="false">AIzaSyBk46EyYEGw_ow01ikGM9HylM7GoqAJM60</string>
+    <string name="google_app_id" translatable="false">1:281951453985:android:efd8103b65022b64ed7460</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBk46EyYEGw_ow01ikGM9HylM7GoqAJM60</string>
+    <string name="google_storage_bucket" translatable="false">mentalmath-3a7c8.appspot.com</string>
+    <string name="project_id" translatable="false">mentalmath-3a7c8</string>
+</resources>
