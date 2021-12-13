@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mentalmath/backend/constants/testTrackData.dart';
 import 'package:mentalmath/frontend/pages/core/quiz.dart';
+import 'package:mentalmath/frontend/widgets/misc/gridButtons.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Home extends StatelessWidget {
@@ -66,36 +67,22 @@ class Home extends StatelessWidget {
               itemWidth: 300,
               layout: SwiperLayout.STACK,
             ),
+            GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              mainAxisSpacing: 10,
+              childAspectRatio: (Get.width / 2) / (Get.height / 4.5),
+              crossAxisSpacing: 10,
+              children: [
+                gridWidget('assets/stat.png', Colors.grey[200]),
+                gridWidget('assets/bar.png', Colors.yellow),
+                gridWidget('assets/stat.png', Colors.yellow),
+                gridWidget('assets/stat.png', Colors.grey[200]),
+              ],
+            ),
           ],
         ));
-  }
-
-  Column cards() {
-    return Column(
-      children: testTracks.map((testTrack) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: MaterialButton(
-            minWidth: double.infinity,
-            height: 100,
-            color: Colors.blue,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            padding: EdgeInsets.all(10),
-            key: Key(testTrack['id'].toString()),
-            onPressed: () {
-              Get.to(ProblemPage(track: testTrack['track'].toString()));
-            },
-            child: Text(
-              testTrack['title'].toString(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        );
-      }).toList(),
-    );
   }
 }
