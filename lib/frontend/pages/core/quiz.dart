@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:alan_voice/alan_voice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -7,11 +8,14 @@ import 'package:mentalmath/backend/controllers/quizController.dart';
 
 class ProblemPage extends HookWidget {
   final String track;
-  ProblemPage({Key? key, required this.track}) : super(key: key);
+
+  ProblemPage({Key? key, required this.track}) {
+  }
 
   QuizController _quizController = Get.put(QuizController());
   TextEditingController answerController = new TextEditingController();
   final formKey = new GlobalKey<FormState>();
+
   String buttonText(int value) {
     switch (value) {
       case 0:
@@ -24,11 +28,19 @@ class ProblemPage extends HookWidget {
     return "Check Answer";
   }
 
+  void sendData(String question, String result) {
+    question = "What is $question ?";
+    var params = jsonEncode({"question": question, "result": result});
+    AlanVoice.callProjectApi("script::playQuestion", params);
+  }
+
   @override
   Widget build(BuildContext context) {
     final _question = useState(_quizController.handlerFunction(track));
+    sendData(_question.value['question'], _question.value['result'].toString());
     final _buttonColor = useState(Colors.orange);
     final _isCorrect = useState(0);
+
     return Scaffold(
       body: Center(
         child: Padding(
@@ -99,6 +111,7 @@ class ProblemPage extends HookWidget {
                       answerController.clear();
                       _buttonColor.value = Colors.orange;
                       _question.value = _quizController.handlerFunction(track);
+                      // sendData(_question.value['question']);
                     },
                     child: Text(
                       "Next",

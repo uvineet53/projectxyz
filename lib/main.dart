@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(
               color: Colors.grey[100],
             )),
-        home: AuthenticationWrapper(),
+        home: Home(),
       ),
     );
   }
