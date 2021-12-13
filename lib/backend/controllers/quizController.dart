@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:mentalmath/backend/controllers/alanController.dart';
 
 class QuizController extends GetxController {
   Map<String, dynamic> _question = {};
-
   int random(min, max) {
     var rn = new Random();
     return min + rn.nextInt(max - min);
@@ -42,6 +42,7 @@ class QuizController extends GetxController {
         _question = squaresQuiz();
         break;
     }
+
     return _question;
   }
 
