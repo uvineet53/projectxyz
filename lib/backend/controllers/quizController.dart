@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 class QuizController extends GetxController {
+  Map<String, dynamic> _question = {};
+
   int random(min, max) {
     var rn = new Random();
     return min + rn.nextInt(max - min);
@@ -29,18 +31,21 @@ class QuizController extends GetxController {
   }
 
   Map<String, dynamic> handlerFunction(String track) {
-    Map<String, dynamic> question = {};
     switch (track) {
       case 'add':
-        question = additonQuiz();
+        _question = additonQuiz();
         break;
       case 'multiply':
-        question = multiplicationQuiz();
+        _question = multiplicationQuiz();
         break;
       case 'square':
-        question = squaresQuiz();
+        _question = squaresQuiz();
         break;
     }
-    return question;
+    return _question;
+  }
+
+  Map<String, dynamic> getCurrentQuestion() {
+    return _question;
   }
 }
